@@ -7,18 +7,64 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>我的乐淘</title>
   <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="lib/bootstrap-validator/css/bootstrapValidator.css">
   <link rel="stylesheet" href="css/common.css">
 
 
 </head>
 
 <body class="body_bg">
-  
+  <!-- bootstrap 组件 带标题的面板 -->
+  <div class="container">
+    <!-- 这里不需要考虑移动端 中屏和大屏显示就好-->
+    <div class="col-md-4 col-md-offset-4">
+      <!-- panel-primary蓝颜色 -->
+      <div class="panel  panel-primary mt_150">
+        <div class="panel-heading ">
+          <h4 class='text-center'>后台管理系统</h4>
+        </div>
+        <div class="panel-body">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="username" class="col-sm-3 control-label">用户名</label>
+              <div class="col-sm-9">
+                <!-- autocomplete="off" 关闭input框的历史内容的提示 -->
+                <input type="text" class="form-control" id="username" name="username" placeholder="请输入用户名" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password" class="col-sm-3 control-label">密码</label>
+              <div class="col-sm-9">
+                <input type="password" class="form-control" id="password" name='password' placeholder="请输入密码">
+              </div>
+            </div>
+            <div class="form-group">
+              <!-- 栅格左右留3 中间留6 -->
+              <div class="col-sm-offset-3 col-sm-6">
+                <!-- reset充值按钮 -->
+                <button type="reset" class="btn btn-default pull-left">重置</button>
+                <!-- submit提交按钮 -->
+                <!-- 必须要使用submit(会跳转) 不能使用按钮 -->
+                <!-- 因为项目中药使用表单校验 邓表达校验完成才能提交 -->
+                <button type="submit" class="btn btn-primary pull-right ">登录</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
 
 
 
 
-<script src="lib/bootstrap/js/bootstrap.js"></script>
+
+
+  <script src="lib/bootstrap/js/bootstrap.js"></script>
+  <script src="lib/bootstrap-validator/js/bootstrapValidator.js"></script>
+  <script src="login.js"></script>
 </body>
 
 </html>
