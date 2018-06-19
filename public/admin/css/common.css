@@ -108,3 +108,17 @@ html,body{
 .breadcrumb a {
   color: #337ab7;
 }
+
+
+/* user */
+/* 让表格里的文字居中 */
+table tbody td,
+table thead th
+{
+  text-align: center;
+  vertical-align:middle !important;
+}
+
+.lt_main table{
+  margin-top: 15px;
+}

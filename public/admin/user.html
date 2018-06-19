@@ -29,9 +29,9 @@
       <ul>
         <li>
           <!-- 第一个a跳到用户管理 -->
-          <a href="user.html" class ='now'>
+          <a href="user.html" class='now'>
             <span class="glyphicon glyphicon-user"></span>
-            <span >用户管理</span>
+            <span>用户管理</span>
           </a>
         </li>
         <li>
@@ -39,7 +39,7 @@
             <span class="glyphicon glyphicon-list"></span>
             <span>分类管理</span>
           </a>
-         
+
           <div class="child " style="display: none;">
             <a href="first.html">一级分类</a>
             <a href="second.html">二级分类</a>
@@ -76,7 +76,29 @@
       </ol>
 
       <!-- 内容区域 -->
-      <div class="content">222</div>
+      <div class="content">
+        <table class='table table-bordered table-hover '>
+          <thead>
+            <tr>
+              <th width='10%'>序号</th>
+              <th width='30%'>用户名</th>
+              <th width='30%'>手机号</th>
+              <th width='20%'>状态</th>
+              <th width='10%'>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 挖个坑 -->
+          </tbody>
+        </table>
+        <!-- 分页功能 外边大盒子是用来控制分页在右边的 -->
+        <div class="text-right">
+          <ul id="paginator"></ul>
+          </ul>
+
+        </div>
+
+      </div>
     </div>
 
 
@@ -84,29 +106,81 @@
 
   <!-- js插件 退出模态框 -->
   <div class="modal fade" tabindex="-1" id="logoutModal">
-      <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">温馨提示</h4>
-          </div>
-          <div class="modal-body">
-            <p class="text-danger">
-              <span class="glyphicon glyphicon-info-sign"></span>
-              您确定要退出后台管理系统吗？
-            </p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-            <button type="button" class="btn btn-primary btn_logout">确定</button>
-          </div>
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">温馨提示</h4>
+        </div>
+        <div class="modal-body">
+          <p class="text-danger">
+            <span class="glyphicon glyphicon-info-sign"></span>
+            您确定要退出后台管理系统吗？
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary btn_logout">确定</button>
         </div>
       </div>
     </div>
+  </div>
+  <!-- 启动模态框 -->
+
+  <!-- 启用禁用模态框 -->
+  <div class="modal fade" tabindex="-1" id="userModal">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">温馨提示</h4>
+        </div>
+        <div class="modal-body">
+          <p class="text-danger">
+            <span class="glyphicon glyphicon-info-sign"></span>
+            你确定要执行此操作吗？
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary btn_update">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/html" id="tpl">
+  {{each rows v i}}
+    <tr>
+      <td>{{ (page -1)* size + i +1 }}</td>
+      <td>{{ v.username }}</td>
+      <td>{{ v.mobile }}</td>
+      <td>{{  v.isDelete === 1? '正常':'禁用'}}</td>
+      <!-- 存共同的父亲上 -->
+      <td data-id='{{v.id}}'>
+          {{if v.isDelete === 0}}
+        <button class="btn btn-success btn-sm">启用</button>
+        {{/if}}
+        {{if v.isDelete === 1}}
+        <button class="btn btn-danger btn-sm">禁用</button>
+        {{/if}}
+      </td>
+    </tr>
+    {{/each}}
+  </script>
+
   <script src="lib/jquery/jquery.min.js"></script>
   <script src="lib/bootstrap/js/bootstrap.js"></script>
   <script src="lib/nprogress/nprogress.js"></script>
+  <script src="lib/artTemplate/template-web.js"></script>
+  <script src="lib/bootstrap-paginator/bootstrap-paginator.js"></script>
   <script src="js/common.js"></script>
+  <script src="js/user.js"></script>
+
+
 </body>
 
 </html>
