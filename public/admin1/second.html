@@ -81,7 +81,7 @@
 
       <!-- 内容区域 -->
       <div class="content">
-        <button class="btn btn-default btn_add">添加分类</button>
+        <button class="btn btn-default add">添加分类</button>
         <table class='table table-bordered table-hover  '>
           <thead>
             <tr>
@@ -139,13 +139,13 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h4 class="modal-title">添加商品</h4>
+          <h4 class="modal-title">添加分类</h4>
         </div>
         <form>
           <div class="modal-body">
             <!-- 每一个表单元素，都应该使用form-group进行包裹。 -->
             <div class="form-group">
-              <!-- 赋值给一个隐藏的文本框，点击添加的时候，需要把这个id传递到后台 -->
+              <!-- 赋值给一个隐藏的文本框，点击添加的时候，需要把这个id传递到后台  这个是所属分类的id-->
               <input type="hidden" name="categoryId">
               <!-- 因为hot是必传的，就写死了1 -->
               <input type="hidden" name="hot" value="1">

@@ -60,8 +60,8 @@ $(function () {
     var txt = $(this).text();
     $('.dropdown-text').text(txt);
     //- 获取a标签的id，设置给隐藏的input框，categoryId,目的是能够发送到后台
-    //- 表单校验的时候，需要让categoryId通过
-    var id = $(this).data('id')
+    //- 表单校验的时候，所属分类id 需要让categoryId通过
+      var id = $(this).data('id')
     //获取到id，设置给categoryId这个隐藏域 
     // 把input的vlaue值赋值给[name='categoryId']
     $("[name='categoryId']").val(id);
