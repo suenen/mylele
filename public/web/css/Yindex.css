@@ -1,0 +1,33 @@
+.lt_nav{
+padding: 10px;
+}
+
+.lt_nav li{
+  width: 33.3%;
+  float: left;
+
+}
+
+/* product */
+.lt_product {
+  padding: 10px;
+}
+.lt_product a{
+  border: 1px solid #ccc;
+  float: left;
+   width: 48%;
+   padding: 10px;
+   /* margin: 10px; */
+   margin-bottom: 10px;
+   text-align: center;
+
+}
+.lt_product a:nth-child(even){
+  margin-left: 4%;
+}
+.lt_product .old_price{
+  text-decoration: line-through;
+}
+.lt_product .price{
+  color: red;
+}
