@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- 少了是否允许用户缩放 user-scalable=no -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>乐淘商城~首页</title>
+  <link rel="icon" href="favicon.ico">
+  <!-- 引入mui插件 -->
+  <link rel="stylesheet" href="lib/mui/css/mui.css">
+  <link rel="stylesheet" href="lib/fa/css/font-awesome.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/category .css">
+
+</head>
+
+<body>
+  <!-- 百分百全屏容器.需要用一个大容器包裹起来宽高都设置100% -->
+  <div class="lt_container">
+    <div class="lt_header">
+      <!-- javascript:history.go(-1);不用js点击事件直接返回上一页 -->
+      <a href="javascript:history.go(-1);" class="icon_left">
+        <span class="mui-icon mui-icon-back "></span>
+      </a>
+      <h4>乐淘分类</h4>
+      <a href="search.html" class="icon_right">
+        <span class="fa fa-search"></span>
+      </a>
+    </div>
+    <div class="lt_center">
+      <div class="category_left">
+        <div class="mui-scroll-wrapper">
+          <div class="mui-scroll">
+            <ul>
+              <!-- 挖个坑 -->
+
+            </ul>
+          </div>
+        </div>
+
+      </div>
+      <div class="category_right">
+        <div class="mui-scroll-wrapper">
+          <div class="mui-scroll">
+            <ul class="mui-clearfix">
+             <!-- 挖个坑 -->
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="lt_footer ">
+      <ul>
+        <li>
+          <a href="Yindex.html">
+            <span class="fa fa-home"></span>
+            <p>首页</p>
+          </a>
+        </li>
+        <li class='now'>
+          <a href="category.html">
+            <span class="fa fa-bars"></span>
+            <p>分类</p>
+          </a>
+        </li>
+        <li>
+          <a href="index.html">
+            <span class="fa fa-shopping-cart"></span>
+            <p>购物车</p>
+          </a>
+        </li>
+        <li>
+          <a href="index.html">
+            <span class="fa fa-user"></span>
+            <p>会员中心</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <script type="text/html" id="tpl">
+     {{each rows v i}}
+     <!-- id要加 回头点的时候 还需要加样式 -->
+    <li data-id="{{v.id}}" class="{{i==0?'now':''}}">
+        <a href="javascript:;">{{v.categoryName}}</a>
+      </li>
+     
+      {{/each}} 
+    </script>
+    <script type="text/html" id ='tpl2'>
+
+      {{if rows.length === 0}}
+         <p class= 'tps'>当前分类没有更多的信息!!!</p>
+      {{/if}}
+      {{each rows v i}}
+      <li>
+          <a href="#">
+            <img src="{{v.brandLogo?v.brandLogo:'images/none.jpg'}}" alt="">
+          </a>
+          <p>{{v.brandName}}</p>
+        </li>
+        {{/each}}
+    </script>
+
+  <script src="lib/mui/js/mui.js "></script>
+  <script src="lib/zepto/zepto.min.js"></script>
+  <script src="lib/artTemplate/template-web.js"></script>
+  <script src="js/common.js "></script>
+  <script src="js/category .js"></script>
+</body>
+
+</html>
