@@ -90,7 +90,7 @@ $(function () {
 
         }
         if (info.error === 1000) {
-          //手动让username校验失败       让username失败
+          //手动让username校验失败       让username失败 callback 指定的显示内容
           $('form').data('bootstrapValidator').updateStatus("username", "INVALID", 'callback')
           //参数1： 更新哪个字段
           //参数2： 更新为什么状态  INVALID  VALID

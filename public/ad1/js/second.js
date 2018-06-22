@@ -37,21 +37,6 @@ $(function () {
 
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   //点击添加分类按钮
   $('.add').on('click', function () {
     $('#addModal').modal('show')
@@ -82,6 +67,9 @@ $(function () {
     var id = $(this).data('id');
     console.log(id);  ///获取a标签的id
     $('[ name="categoryId"]').val(id);
+    // 手动让图片校验失败
+    $("form").data("bootstrapValidator").updateStatus("categoryId", "VALID");
+
   })
 
 
@@ -93,10 +81,76 @@ $(function () {
       $(".img_box img").attr("src", data.result.picAddr);
       // 让
       $('[name="brandLogo"]').val(data.result.picAddr)  //让brandLogo赋值.发送给后台
-  
+      // 手动让图片校验失败
+      $("form").data("bootstrapValidator").updateStatus("brandLogo", "VALID");
+
     }
 
 
-  })
+  });
+  // 表单的校验
+  $("form").bootstrapValidator({
+    //excluded:指定不校验的类型，[]所有的类型都校验
+    excluded: [],
+    // 校验成功的小图标
+    feedbackIcons: {
+      valid: 'glyphicon glyphicon-thumbs-up',
+      invalid: 'glyphicon glyphicon-remove',
+      validating: 'glyphicon glyphicon-refresh'
+    },
+    fields: {
+      //校验用户名，对应name表单的name属性
+      //  所属分类
+      categoryId: {
+        validators: {
+          notEmpty: {
+            message: '请选择一级分类'
+          }
+        }
+      },
+      brandName: {
+        validators: {
+          notEmpty: {
+            message: '请输入二级分类的名称'
+          }
+        }
+      },
+      brandLogo: {
+        validators: {
+          notEmpty: {
+            message: '请上传二级分类的图片'
+          }
+        }
+      }
 
+    }
+  });
+  // 校验成功的时候触发事件
+  $('form').on('success.form.bv', function (e) {
+    e.preventDefault();
+    // 使用ajax提交
+    $.ajax({
+      type: 'post',
+      url: '/category/addSecondCategory',
+      data: $('form').serialize(),
+      success: function (info) {
+        // console.log(info);
+        if (info.success) {
+          $('#addModal').modal('hide')
+          page = 1;
+          render();
+          // 重置表单
+          $("form").data("bootstrapValidator").resetForm(true);
+          $(".dropdown-text").text("请选择一级分类");
+          $(".img_box img").attr("src", "images/none.png");
+        }
+
+
+      }
+
+    })
+
+
+
+  })
 });

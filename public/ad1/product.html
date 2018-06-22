@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>商品管理</title>
+  <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="lib/bootstrap-validator/css/bootstrapValidator.css">
+  <link rel="stylesheet" href="lib/nprogress/nprogress.css">
+  <link rel="stylesheet" href="css/common.css">
+
+
+</head>
+
+<body>
+  <!-- 左侧边栏 -->
+  <div class="lt_aslide">
+    <div class="brand">
+      <a href="index.html">黑马22期</a>
+
+    </div>
+    <div class="user">
+      <img src="images/default.png" alt="">
+      <p>超级管理员</p>
+    </div>
+    <!-- 小导航 -->
+    <div class="nav">
+      <ul>
+        <li>
+          <!-- 第一个a跳到用户管理 -->
+          <a href="user.html">
+            <span class="glyphicon glyphicon-user"></span>
+            <span>用户管理</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <span class="glyphicon glyphicon-list"></span>
+            <span>分类管理</span>
+          </a>
+
+          <div class="child " style="display: block;">
+            <a href="first.html">一级分类</a>
+            <a href="second.html">二级分类</a>
+          </div>
+        </li>
+        <li>
+          <a href="product.html" class='now'>
+            <span class="glyphicon glyphicon-tags"></span>
+            <span>商品管理</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+  <!-- 右内容区域 -->
+  <div class="lt_main">
+    <div class="header">
+      <a href="javascript:;" class="pull-left">
+        <span class="glyphicon glyphicon-align-justify icon_menu"></span>
+      </a>
+      <a href="javascript:;" class="pull-right">
+        <span class="glyphicon glyphicon-log-out icon_logout"></span>
+      </a>
+    </div>
+    <!-- container-fluid宽度100% -->
+    <div class="container-fluid">
+      <!-- booterstap面包屑导航  组件 路径导航 -->
+      <ol class="breadcrumb">
+        <li>
+          <a href="#">管理系统</a>
+        </li>
+        <li class="active">商品管理</li>
+      </ol>
+
+      <!-- 内容区域 -->
+      <div class="content">
+        <button class="btn btn-default add">添加分类</button>
+        <table class='table table-bordered table-hover  '>
+          <thead>
+            <tr>
+              <th width='10%'>序号</th>
+              <th width='20%'>商品名称</th>
+              <th width='20%'>商品描述</th>
+              <th width='10%'>商品库存</th>
+              <th width='10%'>商品尺寸</th>
+              <th width='10%'>商品状态</th>
+              <th width='10%'>商品操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 挖个坑 -->
+          </tbody>
+        </table>
+        <!-- 分页功能 外边大盒子是用来控制分页在右边的 -->
+        <div class="text-right">
+          <ul id="paginator"></ul>
+          </ul>
+
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+  <!-- js插件 退出模态框 -->
+  <div class="modal fade" tabindex="-1" id="logoutModal">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">温馨提示</h4>
+        </div>
+        <div class="modal-body">
+          <p class="text-danger">
+            <span class="glyphicon glyphicon-info-sign"></span>
+            您确定要退出后台管理系统吗？
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary btn_logout">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 添加模态框  -->
+  <div class="modal fade" tabindex="-1" id="addModal">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">添加商品</h4>
+        </div>
+        <form>
+          <div class="modal-body">
+            <!-- 每一个表单元素，都应该使用form-group进行包裹。 -->
+            <div class="form-group">
+              <!-- 赋值给一个隐藏的文本框，点击添加的时候，需要把这个id传递到后台  这个是所属分类的id-->
+              <input type="hidden" name="brandId">
+              <!-- 组件 下拉菜单 -->
+              <div class="dropdown">
+                <!--  id="dropdownMenu1能否删掉看下边对应有没有.没有就可以删掉 -->
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                  <span class="dropdown-text">请选择二级分类</span>
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <!-- 挖个坑 -->
+
+                </ul>
+              </div>
+            </div>
+            <!-- 这个结构不能自己写，去bootstrap官网拷贝 -->
+            <div class="form-group">
+              <!-- name="brandName (品牌的名称)" 为了让后台拿到name -->
+              <input type="text" name="proName" class="form-control" placeholder="请输入商品的名称">
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="proDesc" cols="30" rows="3" placeholder="请输入商品的描述"></textarea>
+            </div>
+            <div class="form-group">
+              <input type="text" name="num" class="form-control" placeholder="请输入商品的库存">
+            </div>
+            <div class="form-group">
+              <input type="text" name="size" class="form-control" placeholder="请输入商品的尺码">
+            </div>
+            <div class="form-group">
+              <input type="text" name="oldPrice" class="form-control" placeholder="请输入商品的原价">
+            </div>
+            <div class="form-group">
+              <input type="text" name="price" class="form-control" placeholder="请输入商品的现价">
+            </div>
+            <div class="form-group">
+              <!-- 按钮是不能上传图片的 -->
+              <!-- 坑-----label可以和input框关联 -->
+              <label for='fileupload' class="btn btn-default">上传图片</label>
+              <!-- fileupload文件上传的一个id -->
+              <!-- name: 上传图片的name属性，后端通过name属性获取到文件 -->
+              <!-- data-url: 指定后端的地址 -->
+              <input type="file" id="fileupload" class="hidden" name="pic1" data-url="/product/addProductPic" multiple>
+            </div>
+            <div class="form-group">
+              <!-- 用img_box包起来是因为方便更改-->
+              <div class="img_box">
+                <!-- <img src="images/none.png" width="100" alt=""> -->
+                <!-- 这个校验永远是失败的 因为没值 -->
+                <input type="hidden" name="tips">
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <!-- 要想submit提交 还需要在form里边  因为表单提交了才可以做表单校验 -->
+            <button type="submit" class="btn btn-primary btn_confirm">确定</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <script type="text/html" id="tpl">
+    {{each rows v i}}
+    <tr>
+        <td>{{(page -1)*size +i + 1}}</td>
+        <td>{{v.proName
+          
+          }}</td>
+        <td>{{v.proDesc}}</td>
+        <td>{{v.num
+          
+          }}</td>
+        <td>{{v.size}}</td>
+        <td>{{v.statu === 1? '上架':'下架'}}</td>
+        <td>
+          <button class = 'btn btn-sm btn-primary'>下架</button>
+        </td>
+      </tr>
+   
+  {{/each}}
+  </script>
+
+  <script type="text/html" id="tpl2">
+    {{each rows v i}}
+    <li>
+      <!-- v.categoryName一级分类的内容 -->
+      <!-- id需要存起来.选某个值id需要存起来.点确定的时候id需要发送到后台 -->
+      <!-- 内容也在a里边 所以直接id 和内容都给a  -->
+      <li><a data-id="{{v.id}}" tabindex="-1" href="#">{{v.categoryName}}</a></li>
+    </li>
+      {{/each}}
+  </script>
+  <script src="lib/jquery/jquery.js"></script>
+  <script src="lib/jquery-fileupload/jquery.ui.widget.js"></script>
+  <script src="lib/jquery-fileupload/jquery.fileupload.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.js"></script>
+  <script src="lib/artTemplate/template-web.js"></script>
+  <script src="lib/bootstrap-paginator/bootstrap-paginator.js"></script>
+  <script src="lib/nprogress/nprogress.js"></script>
+  <script src="lib/bootstrap-validator/js/bootstrapValidator.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/product.js"></script>
+</body>
+
+</html>
