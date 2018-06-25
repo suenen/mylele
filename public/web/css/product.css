@@ -1,0 +1,53 @@
+.lt_shopping{
+  position: absolute;
+  height: 55px;
+  width: 100%;
+  bottom: 0;
+  border-top: 1px solid red;
+  padding: 10px;
+ line-height: 55px;
+ background-color: #eee;
+
+}
+.proName,
+.lt_price
+,.size,
+.proNum,
+.proDesc
+{
+   border-top: 1px solid #ccc;
+   padding: 10px;
+}
+
+.lt_price .old_price{
+  text-decoration: line-through;
+  font-size: 12px;
+  color: #666;
+
+}
+.lt_price .price{
+  color:red;
+  padding-left: 10px;
+}
+.size span{
+  border: 1px solid #ccc;
+  padding: 5px;
+   line-height: 30px;
+   font-size: 12px;
+   background-color: #eee;
+}
+.size span:nth-child(1){
+  margin-left: 10px;
+}
+.proNum .mui-numbox{
+ margin-left: 10px;
+}
+
+.proNum span {
+  font-size: 12px;
+  color: #ccc;
+}
+.size span.now{
+  background-color: #069;
+
+}

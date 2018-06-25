@@ -266,9 +266,9 @@ $(function () {
 */
     // console.log(param);  //所有的后台要的参数名 
     // &picName1 后端要的参数名   img[0].picName传给后端的参数值
-    param += '&picName1' + img[0].picName + '&picAddr1' + img[0].picAddr;
-    param += '&picName2' + img[1].picName + '&picAddr2' + img[1].picAddr;
-    param += '&picName3' + img[2].picName + '&picAddr3' + img[2].picAddr;
+    param += '&picName1=' + img[0].picName + '&picAddr1=' + img[0].picAddr;
+    param += '&picName2=' + img[1].picName + '&picAddr2=' + img[1].picAddr;
+    param += '&picName3=' + img[2].picName + '&picAddr3=' + img[2].picAddr;
     $.ajax({
       type: 'post',
       url: '/product/addProduct',

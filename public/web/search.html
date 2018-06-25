@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="lib/mui/css/mui.css">
   <link rel="stylesheet" href="lib/fa/css/font-awesome.css">
   <link rel="stylesheet" href="css/common.css">
-  <link rel="stylesheet" href="css/category .css">
+  <link rel="stylesheet" href="css/search.css">
 
 </head>
 
@@ -24,35 +24,26 @@
       <a href="javascript:history.go(-1);" class="icon_left">
         <span class="mui-icon mui-icon-back "></span>
       </a>
-      <h4>乐淘分类</h4>
-      <a href="search.html" class="icon_right">
-        <span class="fa fa-search"></span>
-      </a>
+      <h4>搜索中心</h4>
     </div>
     <div class="lt_center">
-      <div class="category_left">
-        <div class="mui-scroll-wrapper">
-          <div class="mui-scroll">
-            <ul>
-              <!-- 挖个坑 -->
-
-            </ul>
+      <div class="mui-scroll-wrapper">
+        <div class="mui-scroll">
+          <!-- 搜索区 -->
+          <div class="lt_search">
+            <input type="text" placeholder="请输入关键的搜索字">
+            <button class="mui-btn mui-btn-primary btn_serach">搜索</button>
           </div>
-        </div>
-
-      </div>
-      <div class="category_right">
-        <div class="mui-scroll-wrapper">
-          <div class="mui-scroll">
-            <ul class="mui-clearfix">
-             <!-- 挖个坑 -->
-            </ul>
+          <!-- 历史区 -->
+          <div class="lt_history">
+            <!-- 挖个大坑 -->
           </div>
         </div>
       </div>
-
 
     </div>
+
+
     <div class="lt_footer ">
       <ul>
         <li>
@@ -61,7 +52,7 @@
             <p>首页</p>
           </a>
         </li>
-        <li class='now'>
+        <li>
           <a href="category.html">
             <span class="fa fa-bars"></span>
             <p>分类</p>
@@ -83,34 +74,38 @@
     </div>
   </div>
   <script type="text/html" id="tpl">
-     {{each rows v i}}
-     <!-- id要加 回头点的时候 还需要加样式 -->
-    <li data-id="{{v.id}}" class="{{i==0?'now':''}}">
-        <a href="javascript:;">{{v.categoryName}}</a>
-      </li>
-     
-      {{/each}} 
+     <!-- 搜索清空 -->
+     {{if rows.length === 0}}
+     <p>没有更多的历史记录!!</p>
+     {{else}}
+     <div class="empty mui-clearfix">
+        <span class="mui-pull-left">搜索历史</span>
+        <span class="mui-pull-right icon_empty">
+          <i class="fa fa-trash"></i>
+          清空历史</span>
+      </div>
+      <!-- 历史保留区 -->
+      <div class="p_10">
+        <ul>
+          {{each rows v i}}
+          <li class ='mui-clearfix'>
+            <!-- key={{v}}的值(文字)传过来 ,后边的页面就可以拿到这个参数 -->
+            <a href="searchList.html?key={{v}}" class="mui-pull-left">{{v}}</a>
+            <!-- data-index="{{i}}"给当前点击的x 存一个下标 -->
+            <span  data-index="{{i}}" class="mui-icon mui-icon-closeempty mui-pull-right btn_delete"></span>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+     {{/if}}
     </script>
-    <script type="text/html" id ='tpl2'>
 
-      {{if rows.length === 0}}
-         <p class= 'tps'>当前分类没有更多的信息!!!</p>
-      {{/if}}
-      {{each rows v i}}
-      <li>
-          <a href="#">
-            <img src="{{v.brandLogo?v.brandLogo:'images/none.jpg'}}" alt="">
-          </a>
-          <p>{{v.brandName}}</p>
-        </li>
-        {{/each}}
-    </script>
 
   <script src="lib/mui/js/mui.js "></script>
   <script src="lib/zepto/zepto.min.js"></script>
   <script src="lib/artTemplate/template-web.js"></script>
   <script src="js/common.js "></script>
-  <script src="js/category .js"></script>
+  <script src="js/search.js"></script>
 </body>
 
 </html>

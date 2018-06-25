@@ -29,7 +29,7 @@ h4{
   overflow: hidden;
   position: relative;
   padding-top: 45px;
-  padding-bottom: 55px;
+  padding-bottom: 85px;
 }
 
 /* 因为头和尾都是公共的 所以写在公共类就好 */
@@ -107,4 +107,70 @@ h4{
   /* background-color: green; */
   /* 这里的relative因为mui是用的absolut定位, .lt_center是父盒子*/
   position: relative;
+}
+ 
+/* input框搜索公共样式 */
+.lt_search{
+  padding: 10px;
+  position: relative;
+}
+
+.lt_search input{
+  width: 100%;
+  height: 34px;
+  border: 1px solid #007aff;
+  font-size: 12px;
+  margin: 0;
+}
+
+.lt_search button{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border-radius: 0 3px 3px 0;
+}
+
+/* product公共类 */
+.lt_product {
+  padding: 10px;
+}
+/* 防止盒子长短不一致 */
+.lt_product .proName{
+  height: 39px;
+}
+.lt_product a{
+  border: 1px solid #ccc;
+  float: left;
+   width: 48%;
+   padding: 10px;
+   /* margin: 10px; */
+   margin-bottom: 10px;
+   text-align: center;
+
+}
+.lt_product a:nth-child(even){
+  margin-left: 4%;
+}
+.lt_product .old_price{
+  text-decoration: line-through;
+}
+.lt_product .price{
+  color: red;
+}
+
+.loading {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #069;
+  margin: 100px auto;
+  animation: zhuan 1s infinite;
+}
+
+@keyframes zhuan {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

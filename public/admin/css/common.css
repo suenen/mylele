@@ -122,3 +122,10 @@ table thead th
 .lt_main table{
   margin-top: 15px;
 }
+
+.charts_left,
+.charts_right{
+  width: 45%;
+  height: 400px;
+
+}

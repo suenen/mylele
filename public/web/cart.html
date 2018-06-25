@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="lib/mui/css/mui.css">
   <link rel="stylesheet" href="lib/fa/css/font-awesome.css">
   <link rel="stylesheet" href="css/common.css">
-  <link rel="stylesheet" href="css/category .css">
+  <link rel="stylesheet" href="css/cart.css">
 
 </head>
 
@@ -24,33 +24,32 @@
       <a href="javascript:history.go(-1);" class="icon_left">
         <span class="mui-icon mui-icon-back "></span>
       </a>
-      <h4>乐淘购物</h4>
+      <h4>购物车</h4>
       <a href="search.html" class="icon_right">
         <span class="fa fa-search"></span>
       </a>
     </div>
     <div class="lt_center">
-      <div class="category_left">
-        <div class="mui-scroll-wrapper">
-          <div class="mui-scroll">
-            <ul>
-              <!-- 挖个坑 -->
+      <div class="mui-scroll-wrapper">
+        <div class="mui-scroll">
+          <ul id="OA_task_2" class="mui-table-view">
+            <!-- 挖个坑 -->
+          </ul>
 
-            </ul>
-          </div>
-        </div>
 
-      </div>
-      <div class="category_right">
-        <div class="mui-scroll-wrapper">
-          <div class="mui-scroll">
-            <ul class="mui-clearfix">
-              <!-- 挖个坑 -->
-            </ul>
-          </div>
         </div>
       </div>
-
+    </div>
+    <!-- 订单总金额区域 -->
+    <div class="cart_money">
+      <div class="mui-pull-left col">
+        <!-- 回头需要改变价格 -->
+        订单总金额&yen;
+        <span>0.00</span>
+      </div>
+      <div class="mui-pull-right ">
+        <a href="javascript:;" class="DD">生成订单</a>
+      </div>
 
     </div>
     <div class="lt_footer ">
@@ -74,26 +73,82 @@
           </a>
         </li>
         <li>
-          <a href="index.html">
+          <a href="user.html">
             <span class="fa fa-user"></span>
             <p>会员中心</p>
           </a>
         </li>
       </ul>
     </div>
-  </div>
-  <script type="text/html" id="tpl">
-   
+    <script type="text/html" id="tpl">
+      {{each info v i}}
+      <li class="mui-table-view-cell">
+          <div class="mui-slider-right mui-disabled">
+            <!-- 删除修改需要存id -->
+            <a class="mui-btn mui-btn-blue mui-icon mui-icon-compose btn_edit" data-id="{{v.id}}" data-size="{{v.size}}" data-product-size={{v.productSize}} data-num="{{v.num}}" data-product-num={{v.productNum}}></a>
+            <a class=" mui-btn mui-btn-red mui-icon mui-icon-trash btn_delete" data-id ='{{v.id}}'></a>
+          </div>
+          <div class="mui-slider-handle">
+            <div class="mui-table-cell">
+              <div class="cart_left">
+                <img src="{{v.pic[0].picAddr
+                  
+                  }}" alt="">
+              </div>
+              <div class="cart_right">
+                <p class="proName mui-ellipsis-2">{{v.proName
+                                    
+                    }}</p>
+                <p class="proPrice">
+                  <span class="price">{{v.price
+                    
+                      }}</span>
+                  <span class="old_price">{{v.oldPrice}}</span>
+                  <span class="mui-pull-right">{{v.num}}双</span>
+                </p>
+                <p class="size">鞋码　:{{v.size}}</p>
+              </div>
+              <input type="checkbox" class="check" data-price = '{{v.price}}' data-num = '{{v.num}}'>
+            </div>
+          </div>
+        </li>
+        {{/each}}
     </script>
-  <script type="text/html" id='tpl2'>
 
-    </script>
 
-  <script src="lib/mui/js/mui.js "></script>
-  <script src="lib/zepto/zepto.min.js"></script>
-  <script src="lib/artTemplate/template-web.js"></script>
-  <script src="js/common.js "></script>
-  <script src="js/category .js"></script>
+    <!-- 自己渲染的模板 -->
+    <script type="text/html" id='tpl2'>
+       <!-- 模板应该有什么???? 尺码,数量 -->
+        <!-- 尺码 -->
+        <div class="proSize">
+            <strong>尺码：</strong>
+            <%
+              var temp = productSize.split("-");
+              for(var i = +temp[0]; i <= temp[1]; i++){
+            %>
+            <!-- size是字符串必须2个等 -->
+            <span class="{{i==size?'now':''}}">{{i}} </span>
+            <%  } %>
+          </div>
+          <div class="proNum">
+              <strong>数量：</strong>
+              <!-- 数字输入框 -->
+              <div class="mui-numbox" data-numbox-min='1' data-numbox-max='{{productNum}}'>
+                <!-- "-"按钮，点击可减小当前数值 -->
+                <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+                <input class="mui-numbox-input" type="number" value="{{num}}" />
+                <!-- "+"按钮，点击可增大当前数值 -->
+                <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+              </div>
+              
+            </div>
+    
+     </script>
+    <script src="lib/mui/js/mui.js "></script>
+    <script src="lib/zepto/zepto.min.js"></script>
+    <script src="lib/artTemplate/template-web.js"></script>
+    <script src="js/common.js "></script>
+    <script src="js/cart.js"></script>
 </body>
 
 </html>

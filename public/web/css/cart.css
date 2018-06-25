@@ -1,0 +1,92 @@
+
+
+/* 左边固定 */
+.cart_left{
+  width: 60px;
+  height: 60px;
+  float: left;
+  background-color:pink;
+  margin-right: 10px;
+}
+.cart_right{
+  padding: 10px 10px;
+  overflow: hidden;
+  text-align: left;
+ 
+   /* height: 60px; */
+
+  /* background-color:#666; */
+}
+.cart_right .proName {
+  color: #333;
+  margin-bottom: 5px;
+  height: 42px;
+} 
+/* 能够继承父元素的宽度 */
+.mui-table-cell {
+  display: block;
+}
+
+
+.cart_right .price{
+  color:red;
+  font-size: 14px;
+}
+.cart_right .old_price{
+   text-decoration: line-through;
+   
+}
+.cart_right .size{
+  color: #666;
+  font-size: 14px;
+
+}
+
+ .check{
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
+.cart_money{
+  height: 30px;
+  background-color: #eee;
+  z-index: 999;
+  position: absolute;
+  bottom: 55px;
+  width: 100%;
+}
+.cart_money .col{
+  color: red;
+  font-size: 12px;
+  line-height: 30px;
+  padding-left: 10px;
+
+}
+.cart_money .DD{
+  font-size: 12px;
+  color: #fff;
+  padding: 8px;
+  background-color: red;
+  height: 30px;
+  line-height: 30px;
+
+}
+
+.proSize {
+  text-align: left;
+}
+
+.proSize span {
+  border: 1px solid #ccc;
+  padding: 5px;
+  font-size: 12px;
+  background-color: #eee;
+  line-height: 30px;
+}
+
+.proSize span.now {
+  background-color: #069;
+}
+.proNum{
+  text-align: left;
+}
